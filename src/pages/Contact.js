@@ -1,10 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import contactImage from "../assets/contact.png";
 
 const Contact = () => {
+  const [messageSent, setMessageSent] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const response = await fetch("https://formsubmit.co/ajax/support@vijayalaxmiltd.com", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      form.reset();
+      setMessageSent(true);
+      setTimeout(() => setMessageSent(false), 5000); // Hide message after 5 seconds
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <div>
-      {/* Hero Section with limited height */}
+      {/* Hero Section */}
       <div className="relative w-full max-h-[400px] overflow-hidden">
         <img
           src={contactImage}
@@ -23,12 +48,26 @@ const Contact = () => {
           Have a question, bulk inquiry, or feedback? Fill out the form below or contact us via the details provided.
         </p>
 
-        <form className="grid grid-cols-1 gap-6 bg-white p-6 rounded-2xl shadow-md">
+        {/* ✅ Success Message */}
+        {messageSent && (
+          <div className="mb-4 p-4 rounded-xl bg-red-100 text-red-700 font-semibold shadow">
+             Message Sent Successfully!
+          </div>
+        )}
+
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 gap-6 bg-white p-6 rounded-2xl shadow-md"
+        >
+          <input type="hidden" name="_captcha" value="false" />
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
             <input
+              name="name"
               type="text"
               placeholder="Jane Doe"
+              required
               className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
@@ -36,8 +75,10 @@ const Contact = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
             <input
+              name="email"
               type="email"
               placeholder="you@example.com"
+              required
               className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
@@ -45,8 +86,10 @@ const Contact = () => {
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
             <textarea
+              name="message"
               placeholder="Let us know how we can help..."
               rows="4"
+              required
               className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
             />
           </div>
