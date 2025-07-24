@@ -36,41 +36,38 @@ export default function Footer() {
                 href="tel:+447424008212"
                 className="flex items-center gap-2 hover:text-amber-300 transition-all duration-200"
               >
-                <FaPhoneAlt /> 
+                <FaPhoneAlt className="text-lg"/> 
               </a>
               <a
                 href="mailto:support@vijayalaxmiltd.com"
                 className="flex items-center gap-2 hover:text-amber-300 transition-all duration-200"
               >
-                <FaEnvelope /> 
+                <FaEnvelope className="text-lg"/> 
               </a>
             </div>
+
           </div>
         </div>
 
         {/* Follow Us Section */}
         <div>
           <h4 className="text-lg font-semibold mb-2">Follow Us</h4>
-          <div className="flex justify-center md:justify-end space-x-5 text-2xl">
+           <div className="flex flex-col items-center md:items-start gap-3 text-sm">
+            <div className="flex gap-4 justify-center md:justify-start flex-wrap">
             <a
               href="https://instagram.com/vijayalaxmi_group"
-              aria-label="Instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition transform hover:text-amber-300 hover:scale-110 duration-300"
+              className="flex items-center gap-2 hover:text-amber-300 transition-all duration-200"
             >
-              <FaInstagram />
+              <FaInstagram className="text-lg" />
             </a>
                         <a
               href="https://wa.me/447424008212"
-              aria-label="WhatsApp"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-base hover:text-amber-300 transition transform hover:scale-110 duration-300"
+              className="flex items-center gap-2 hover:text-amber-300 transition-all duration-200"
             >
-              <FaWhatsapp className="text-lg" /> 
+              <FaWhatsapp className="text-lg"/> 
             </a>
           </div>
+        </div>
         </div>
       </div>
 
