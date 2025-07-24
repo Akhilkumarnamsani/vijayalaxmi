@@ -6,7 +6,7 @@ const Home = () => {
     <div>
       <HeroSection
         title="Welcome to Vijayalaxmi"
-        subtitle="Authentic Indian Spices, Rice, Pulses, Vegetables & Fruits – Exported to the UK"
+        subtitle="Authentic Indian Spices, Rice, Pulses, Vegetables & Fruits – Imported to the UK"
       />
 
       <div className="p-6 max-w-5xl mx-auto text-gray-700 space-y-8">
